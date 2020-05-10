@@ -34,7 +34,6 @@ bbddPATHs.append('ofertasCABLE.csv')
 bbddPATHs.append('ofertasTRACKER.csv')
 
 for i in range(len(bbddPATHs)):
-	print(i)
 	if os.path.exists(bbddPATHs[i]):
 		if i == 0:
 			basesDatos.append(cable.cargarBBDDcable(bbddPATHs[i]))
@@ -137,5 +136,3 @@ if input('Guardar cambios en bases de datos? [s,n]: ')=='s':
 						w.writerow(cab.cableToList(r))
 					elif i == 1:
 						w.writerow(tr.trackerToList(r))
-
-
