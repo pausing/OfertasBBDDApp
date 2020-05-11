@@ -36,7 +36,6 @@ bbddPATHs.append('ofertasCABLE.csv')
 bbddPATHs.append('ofertasTRACKER.csv')
 bbddPATHs.append('ofertasINVERSOR.csv')
 
-
 for i in range(len(bbddPATHs)):
 	if os.path.exists(bbddPATHs[i]):
 		if i == 0:
@@ -65,7 +64,7 @@ while op.upper() != 'S':
 		elif op2 == '2':
 			at = tracker.ItemDesdeCLI()
 			basesDatos[1] = tracker.cargarItemEnBBDDtracker(basesDatos[1],at)
-		elif op2 == '3'
+		elif op2 == '3':
 			at = inversor.ItemDesdeCLI()
 			basesDatos[2] = inversor.cargaItemEnBBDDinversor(basesDatos[1],at)
 	if op.upper() == 'M':
@@ -105,6 +104,25 @@ while op.upper() != 'S':
 				cable.mostrarBBDD(baseDatosFiltrada)
 			elif op2 == '2':
 				tracker.mostrarBBDD(baseDatosFiltrada)
+			exportar=input('Exportar base de datos filtrada? [s/n]: ')
+			if exportar == 's':
+				nombreArchivo = input('Especificar nombre archivo: ')
+				with open(nombreArchivo,mode='w',newline='\n',encoding='utf-8') as f:
+					w = csv.writer(f)
+					titulos = ['id']
+					if op2 == '1': #es cable
+						for j in range(len(cab.atributosTituloscable())):
+							titulos.append(cab.atributosTituloscable()[j])
+					elif op2 == '2':
+						for j in range(len(tr.atributosTitulostracker())):
+							titulos.append(tr.atributosTitulostracker()[j])
+					w.writerow(titulos)
+					for r in baseDatosFiltrada:
+						if op2 == '1':
+							w.writerow(cab.cableToList(r))
+						elif op2 == '2':
+							w.writerow(tr.trackerToList(r))
+
 	if op.upper() == 'D':
 		os.system('cls' if os.name == 'nt' else 'clear')
 		print('\nModificar item: ')
