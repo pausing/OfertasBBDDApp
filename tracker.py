@@ -14,7 +14,7 @@ class tracker:
 		self.atributos = atributos
 	
 	def atributosIdtracker():
-		a = ['id','tipo','galva','velViento','alimen','coms','pu','div','inco','proy','fecha','prov']
+		a = ['id','tipo','galva','velViento','alimen','coms','rango','pu','div','inco','proy','fecha','prov']
 		return a
 
 	def __str__(self):
@@ -27,8 +27,8 @@ class tracker:
 		return s
 
 	def atributosTitulostracker():
-		a=['Tipologia','Galvanizado','Velocidad del viento','Tipo alimentacion', \
-			'Comunicaciones','Precio unitario','Divisa','INCOTERMS','Proyecto / oferta', \
+		a=['Tipologia','Galvanizado','Velocidad del viento [km/h]','Tipo alimentacion', \
+			'Comunicaciones','Rango','Precio unitario','Divisa','INCOTERMS','Proyecto / oferta', \
 			'Fecha','Proveedor']
 		return a
 

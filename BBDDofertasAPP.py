@@ -8,6 +8,8 @@ init()
 from colorama import Fore, Back, Style
 import tracker
 from tracker import tracker as tr
+import inversor
+from inversor import inversor as inv
 
 
 nombreAPP = 'BBDDofertasAPP'
@@ -32,6 +34,8 @@ bbddPATHs = []
 basesDatos = []
 bbddPATHs.append('ofertasCABLE.csv')
 bbddPATHs.append('ofertasTRACKER.csv')
+bbddPATHs.append('ofertasINVERSOR.csv')
+
 
 for i in range(len(bbddPATHs)):
 	if os.path.exists(bbddPATHs[i]):
@@ -39,6 +43,8 @@ for i in range(len(bbddPATHs)):
 			basesDatos.append(cable.cargarBBDDcable(bbddPATHs[i]))
 		elif i == 1:
 			basesDatos.append(tracker.cargarBBDDtracker(bbddPATHs[i]))
+		elif i == 2:
+			basesDatos.append(inversor.cargarBBDDinversor(bbddPATHs[i]))
 		print('Se ha cargado la base de datos de ' + bbddPATHs[i])
 		print('Hay: ' + str(len(basesDatos[i])) + ' elementos.')
 	else: 
@@ -59,6 +65,9 @@ while op.upper() != 'S':
 		elif op2 == '2':
 			at = tracker.ItemDesdeCLI()
 			basesDatos[1] = tracker.cargarItemEnBBDDtracker(basesDatos[1],at)
+		elif op2 == '3'
+			at = inversor.ItemDesdeCLI()
+			basesDatos[2] = inversor.cargaItemEnBBDDinversor(basesDatos[1],at)
 	if op.upper() == 'M':
 		os.system('cls' if os.name == 'nt' else 'clear')
 		print('\nMostrar BBDD: ')
