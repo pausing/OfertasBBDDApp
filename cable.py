@@ -188,6 +188,10 @@ def graficarcable(bbdd):
 	anotaciones = []
 	for i in range(len(bbbddFiltrada)):
 		s = '['
+		# calibre
+		s = s + bbbddFiltrada[i].atributos[cable.atributosIdcable().index('cal')-1] + ', '
+		# cubierta
+		s = s + bbbddFiltrada[i].atributos[cable.atributosIdcable().index('cub')-1] + ', '
 		# proveedor
 		s = s + bbbddFiltrada[i].atributos[cable.atributosIdcable().index('prov')-1] + ', '
 		# divisa
@@ -196,7 +200,7 @@ def graficarcable(bbdd):
 		s = s + bbbddFiltrada[i].atributos[cable.atributosIdcable().index('inco')-1] + ']'
 		anotaciones.append(s)
 	for i in range(len(bbbddFiltrada)):
-		mplot.annotate(anotaciones[i], (fechas[i],precios[i]))
+		mplot.annotate(anotaciones[i], (fechas[i],precios[i]),size='xx-small')
 	
 	ax.grid(True)
 	ax.set_xlabel('Fecha')

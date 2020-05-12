@@ -9,7 +9,7 @@ class tracker:
 		#tecnicos
 		#identificador de item
 		self.id = id
-		#atributos segun ['Calibre','Voltaje','Nivel de aislamiento','Normativa de fabricacion', 'Tipo de cubierta','
+		#atributos segun ['Tipologia','Galvanizado','Velocidad de viento','Alimentacion', 'comunicaciones','Rango de giro'
 		# Precio unitario','Divisa','INCOTERMS','Proyecto / oferta', 'Fecha','Proveedor']
 		self.atributos = atributos
 	
@@ -188,6 +188,12 @@ def graficartracker(bbdd):
 	anotaciones = []
 	for i in range(len(bbbddFiltrada)):
 		s = '['
+		# tipo
+		s = s + bbbddFiltrada[i].atributos[tracker.atributosIdtracker().index('tipo')-1] + ', '
+		# tipo alimentacion
+		s = s + bbbddFiltrada[i].atributos[tracker.atributosIdtracker().index('alimen')-1] + ', '
+		# tipo de comunicaciones 
+		s = s + bbbddFiltrada[i].atributos[tracker.atributosIdtracker().index('coms')-1] + ', '
 		# proveedor
 		s = s + bbbddFiltrada[i].atributos[tracker.atributosIdtracker().index('prov')-1] + ', '
 		# divisa
@@ -196,7 +202,7 @@ def graficartracker(bbdd):
 		s = s + bbbddFiltrada[i].atributos[tracker.atributosIdtracker().index('inco')-1] + ']'
 		anotaciones.append(s)
 	for i in range(len(bbbddFiltrada)):
-		mplot.annotate(anotaciones[i], (fechas[i],precios[i]))
+		mplot.annotate(anotaciones[i], (fechas[i],precios[i]),size='xx-small')
 	
 	ax.grid(True)
 	ax.set_xlabel('Fecha')
